@@ -9,7 +9,7 @@ Installation
 * Put the project somewhere on your python path.
 * Add `pullquote` to your insalled_apps setting::
 
-    INSTALLED_ALLS = [
+    INSTALLED_APPS = [
         ...
         pullquote,
         ...

@@ -27,6 +27,9 @@ Only required argument is `text`, but for more functionality you can also provid
     Quote.objects.add_quote(text="I will live forever", object=entry)
 
 
+Learn more about the models :doc:`here <reference/models>`
+
+
 This will relate your `Quote` to a content objects and thus can be linked to its detail page. For example,
 if you want to display who wrote the quote and it is linked to a Entry object as above, you can display the
 author's name for the Entry.
@@ -118,25 +121,25 @@ Getting a list of random Quotes
 
 .. code-block:: django
 
-    {% pullquote_random_quote_list 5 as object_list %}
+    {% pullquote_random_list 5 as object_list %}
     
 Same as above but will return a list of quotes and assigns it to `object_list` variable. And same as above you can specify two optional arguments
 
 .. code-block:: django
 
-    {% pullquote_random_quote_list 5 as object_list with content_type=blog.entry %}
+    {% pullquote_random_list 5 as object_list with content_type=blog.entry %}
 
 or
 
 .. code-block:: django    
     
-    {% pullquote_random_quote_list 5 as object_list with content_type=blog.entry count=25 %}
+    {% pullquote_random_list 5 as object_list with content_type=blog.entry count=25 %}
     
 or
 
 .. code-block:: django
 
-    {% pullquote_random_quote_list 5 as object_list with count=25 %}
+    {% pullquote_random_list 5 as object_list with count=25 %}
     
     
 Render your quotes
@@ -196,3 +199,14 @@ There is one additional argument `template` you can specify to render a custom t
     {% pullquote_render quote with template=pullquote/custom.html %}
     
     
+    
+Template render order
+^^^^^^^^^^^^^^^^^^^^^
+
+* If you are using the `pullquote_render` template tag, and specify a template, that template will be checked first
+* If no template is specified in the `pullquote_render` template tag
+    #. `PULLQUOTE_TEMPLATES` setting is checked for associated templates
+    #. Model specific templates are then checked
+    #. Default template is used
+
+

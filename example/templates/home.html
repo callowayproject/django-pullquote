@@ -1,0 +1,49 @@
+{% load pullquote_tags %}
+
+<strong>Pull Quote Latest</strong><br/>
+{% pullquote_latest as latest %}
+{{ latest }}
+<hr/>
+
+<strong>Pull Quote Latest w/ ContentType</strong><br/>
+{% pullquote_latest as latest with content_type=simpleapp.article %}
+{{ latest }}
+<hr/>
+
+
+<strong>Pull Quote Random </strong><br/>
+{% pullquote_random as random %}
+{{ random }}
+<hr/>
+
+
+<strong>Pull Quote Random w/ count=2</strong><br/>
+{% pullquote_random as random with count=2 %}
+{{ random }}
+<hr/>
+
+<strong>Pull Quote Random w/ count_type=article and count=2</strong><br/>
+{% pullquote_random as random with content_type=simpleapp.article count=2 %}
+{{ random }}
+<hr/>
+
+
+<strong>Pull Quote Random List</strong><br/>
+{% pullquote_random_list 2 as random %}
+{{ random }}
+<hr/>
+
+<strong>Pull Quote Random List w/ content_type=article</strong><br/>
+{% pullquote_random_list 3 as random with content_type=simpleapp.article %}
+{{ random }}
+<hr/>
+
+<strong>Pull Quote Render</strong><br/>
+{% pullquote_random_list 2 as random %}
+{% for quote in random %}
+    {{ quote.render }}
+    <hr/>
+{% endfor %}
+<hr/>
+
+{% pullquote_render random.0 "pullquote/my_custom_template.html" %}

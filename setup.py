@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='pullquote',
-      version='.1',
+      version='0.1.1',
       description='',
       long_description='',
       author='Jose Soares',
